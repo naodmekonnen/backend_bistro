@@ -19,5 +19,4 @@ class Menu_Items(models.Model):
     cuisine = models.ForeignKey(Cuisine, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
-    def __str__ (self):
-        self.entree + ' ' + ' ' + desc
+  
