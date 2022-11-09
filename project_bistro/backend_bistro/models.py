@@ -12,5 +12,5 @@ class Menu_Items(models.Model):
     description = models.CharField(max_length=50)
     spice_level = models.IntegerField(max_length=50)
     price = models.IntegerField(max_length=50)
-    cuisine = models.ForeignKey(Cuisine)
-    category = models.ForeignKey(Category)
+    cuisine = models.ForeignKey(Cuisine, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
