@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from backend_bistro import views
+from backend_bistro.views import DataView
 
 
 
