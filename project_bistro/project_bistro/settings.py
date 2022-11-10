@@ -38,6 +38,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,10 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend_bistro',
-    'corsheaders'
 ]
-
-CORS_ALLOWED_ORIGINS = ['https://*.gitpod.io']
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.gitpod\.io$",
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
