@@ -26,7 +26,16 @@ SECRET_KEY = 'django-insecure-9%ov=h0l4wz)%u%#f%&21_)!)i#ev97q&4sy96w(m728k1y(!t
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io'] 
+CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io',
+                        'http://localhost:8000'
+                  ] 
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.gitpod\.io$",
+]
+
+
+# CORS_URLS_REGEX = r'^/api/.*$'
 
 # Application definition
 
@@ -41,12 +50,13 @@ INSTALLED_APPS = [
     'corsheaders'
 ]
 
+CORS_ALLOWED_ORIGINS = ['https://*.gitpod.io']
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

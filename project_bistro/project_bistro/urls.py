@@ -23,7 +23,10 @@ from backend_bistro import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('menu/', views.DataView.as_view()),
-    path('menu/', views.get_data),
+    path('', include('backend_bistro.urls')),
+    # path('menu/', views.get_data),
+
 
 ]
+
+    # path('menu/', views.DataView.as_view()),
