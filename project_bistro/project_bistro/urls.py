@@ -25,8 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backend_bistro.urls')),
     # path('menu/', views.get_data),
-
-
-]
-
+    ]
     # path('menu/', views.DataView.as_view()),
