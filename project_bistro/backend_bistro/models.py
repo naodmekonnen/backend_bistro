@@ -21,4 +21,21 @@ class Menu_Items(models.Model):
 
     def __str__ (self):
         return self.entree + ' ' + self.description
+
+    def json(self):
+        return{
+            'entree': self.entree,
+            'description':self.description,
+            'price':self.price,
+            'category':
+             {
+                'title':self.category.name
+                },
+                
+            'cuisine':
+            {
+                'title':self.cuisine.name
+                }
+        }
+  
   

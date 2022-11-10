@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from backend_bistro import views
-from backend_bistro.views import DataView
+# from backend_bistro.views import DataView
 
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('menu/', views.DataView.as_view()),
+    # path('menu/', views.DataView.as_view()),
+    path('menu/', views.get_data),
+
 ]
