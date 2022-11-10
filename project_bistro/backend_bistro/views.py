@@ -5,6 +5,14 @@ from . models import Category,Cuisine,Menu_Items
 from django.core.serializers import serialize
 import json
 
+
+
+def get_data(request):
+    data = [
+            i.json() for i in Menu_Items.objects.all()
+        ]
+    return HttpResponse(json.dumps(data), content_type='application/json')
+
 # class DataView(View):
 #      def get(self, request):
         # menu =  json.loads(serialize("json", Menu_Items.objects.all()))
@@ -19,13 +27,6 @@ import json
 
         # return
         # HttpResponse(json.dumps(data), content_type='application/json')
-
-def get_data(request):
-    data = [
-            i.json() for i in Menu_Items.objects.all()
-        ]
-    return HttpResponse(json.dumps(data), content_type='application/json')
-
 
 
  
