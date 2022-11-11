@@ -4,6 +4,7 @@ from django.views import View
 from . models import Category,Cuisine,Menu_Items
 from django.core.serializers import serialize
 import json
+import csv
 
 
 
@@ -12,6 +13,36 @@ def get_data(request):
             i.json() for i in Menu_Items.objects.all()
         ]
     return HttpResponse(json.dumps(data), content_type='application/json')
+
+def indian(request):
+    indian = list(Menu_Items.objects.filter(cuisine=3).values())
+    return JsonResponse(indian, safe=False)
+
+def american(request):
+    american = list(Menu_Items.objects.filter(cuisine=1).values())
+    return JsonResponse(american, safe=False)
+
+def italian(request):
+    italian = list(Menu_Items.objects.filter(cuisine=2).values())
+    return JsonResponse(italian, safe=False)
+
+def mediterranean(request):
+    mediterranean = list(Menu_Items.objects.filter(cuisine=5).values())
+    return JsonResponse(mediterranean, safe=False)
+
+
+def export_to_csv(request):
+    items = Menu_Items.objects.all()
+    response = HttpResponse(content_type='text/csv')
+    writer = csv.writer(response)
+    writer.writerow(['entree','description','spice_level','price','cuisine','category'])
+    item_fields= items.values_list('entree','description','spice_level','price','cuisine','category')
+
+    for item in item_fields:
+        writer.writerow(item)
+
+    return response
+
 
 # class DataView(View):
 #      def get(self, request):
@@ -43,15 +74,3 @@ def get_data(request):
 
 
 
-
-#   data = []
-#         items = list(Menu_Items.objects.values())
-#         for item in items:
-#             data.append({
-#                 'entree':item.entree,
-#                 'description':item.description,
-#                 'price': item.price,
-#                 'spice_level':item.spice_level,
-#                 'cuisine':model_to_dict(cuisine.objects.get(id=cuisine_id)),
-#                 'category':model_to_dict(category.objects.get(id=category_id)),
-#             })
