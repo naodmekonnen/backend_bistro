@@ -11,6 +11,7 @@ class Cuisine(models.Model):
         return self.name
 
 
+
 class Menu_Items(models.Model):
     entree = models.CharField(max_length=50)
     description = models.CharField(max_length=150)
