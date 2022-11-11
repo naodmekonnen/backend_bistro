@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from backend_bistro import views
+# from backend_bistro.views import DataView
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', include('backend_bistro.urls')),
+    # path('menu/', views.get_data),
+    ]
+    # path('menu/', views.DataView.as_view()),
